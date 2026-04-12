@@ -332,35 +332,6 @@ Educational tool for swimming records analysis and comparison.
 
 **Last Updated:** April 2026
 
----
-
-## 🚢 Ready for GitHub!
-
-This project is now organized and ready to push to GitHub:
-- ✅ Clean folder structure
-- ✅ Proper .gitignore file
-- ✅ Professional README
-- ✅ All data files organized by region
-- ✅ Record Holders feature
-- ✅ Modern, clean UI design
-
-### To push to GitHub:
-```bash
-git init
-git add .
-git commit -m "Initial commit: Tunisia Swimming Records Database"
-git branch -M main
-git remote add origin YOUR_GITHUB_REPO_URL
-git push -u origin main
-```
-
----
-
-## 📧 Contact & Contributions
-
-Have updated swimming records or corrections to suggest? Contact: **belajouza.@et.esiea.com**
-
-Contributions are welcome to keep this database accurate and up-to-date!
 
 ---
 
