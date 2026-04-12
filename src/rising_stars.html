@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Record Holders - Tunisia Swimming</title>
+    <style>
+        :root {
+            --bg-top: #cbeafc; 
+            --bg-mid: #a0d8f7; 
+            --bg-bottom: #76c6f2; 
+            --accent-main: #005b9f; 
+            --accent-dark: #004275;
+            --accent-light: #0077cc;
+            --card-bg: #ffffff; 
+            --text-main: #102a43; 
+            --text-muted: #334e68;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 91, 159, 0.06), 0 2px 4px -1px rgba(0, 91, 159, 0.04);
+            --shadow-md: 0 10px 15px -3px rgba(0, 91, 159, 0.08), 0 4px 6px -2px rgba(0, 91, 159, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 91, 159, 0.12), 0 10px 10px -5px rgba(0, 91, 159, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 0 auto 40px;
+            max-width: 1400px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: var(--text-main);
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            color: var(--text-muted);
+            font-size: 1.2em;
+        }
+
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto 20px;
+            padding: 0 20px;
+        }
+
+        .breadcrumb a {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--accent-main);
+        }
+
+        .stars-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .star-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+        .star-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .star-header {
+            background: linear-gradient(135deg, var(--accent-main) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 30px 25px;
+            text-align: center;
+        }
+
+        .star-header h2 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .record-count {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .star-body {
+            padding: 30px;
+        }
+
+        .records-list {
+            list-style: none;
+        }
+
+        .records-list li {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-light);
+            transition: transform 0.2s ease;
+        }
+
+        .records-list li:hover {
+            transform: translateX(5px);
+        }
+
+        .records-list .event {
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .records-list .time {
+            color: var(--accent-main);
+            font-size: 1.3em;
+            font-weight: 800;
+        }
+
+        .records-list .date {
+            color: var(--text-muted);
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-md);
+        }
+
+        .no-data h2 {
+            color: var(--text-main);
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .stars-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="breadcrumb">
+        ← <a href="index.html">Back to Home</a>
+    </div>
+
+    <div class="header">
+        <h1>National Record Holders</h1>
+        <p>Athletes with Multiple Swimming Records</p>
+    </div>
+
+    <div id="stars-container" class="stars-container">
+        <!-- Record holders will be dynamically loaded here -->
+        <div class="no-data">
+            <h2>Loading...</h2>
+            <p>Analyzing national swimming records</p>
+        </div>
+    </div>
+
+    <script>
+        // Format date
+        function formatDate(dateStr) {
+            if (!dateStr) return 'Date unknown';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+        }
+
+        // Analyze records and find record holders
+        function analyzeRecordHolders(data) {
+            const athletes = {};
+            
+            // Flatten all records and group by swimmer
+            ['long_course', 'short_course'].forEach(course => {
+                ['men', 'women', 'mixed_relay'].forEach(category => {
+                    const records = data[course]?.[category] || [];
+                    records.forEach(record => {
+                        const name = record.swimmer || record.team || 'Unknown';
+                        if (!record.swimmer) return; // Skip relays
+                        
+                        if (!athletes[name]) {
+                            athletes[name] = {
+                                name: name,
+                                records: []
+                            };
+                        }
+                        
+                        athletes[name].records.push({
+                            event: record.event,
+                            time: record.time,
+                            date: record.date,
+                            location: record.location,
+                            course: course === 'long_course' ? 'Long Course (50m)' : 'Short Course (25m)'
+                        });
+                    });
+                });
+            });
+            
+            // Filter for athletes with multiple records
+            const recordHolders = Object.values(athletes)
+                .filter(athlete => athlete.records.length >= 2)
+                .sort((a, b) => b.records.length - a.records.length);
+            
+            return recordHolders;
+        }
+
+        // Render record holders cards
+        function renderRecordHolders(holders) {
+            const container = document.getElementById('stars-container');
+            
+            if (holders.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        <h2>No Data Found</h2>
+                        <p>No swimmers with multiple records found.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = holders.map(athlete => {
+                return `
+                    <div class="star-card">
+                        <div class="star-header">
+                            <h2>${athlete.name}</h2>
+                            <p class="record-count">${athlete.records.length} National Records</p>
+                        </div>
+                        <div class="star-body">
+                            <ul class="records-list">
+                                ${athlete.records.map(record => `
+                                    <li>
+                                        <div class="event">${record.event}</div>
+                                        <div class="time">${record.time}</div>
+                                        <div class="date">
+                                            ${formatDate(record.date)} • ${record.course}
+                                            ${record.location ? `• ${record.location}` : ''}
+                                        </div>
+                                    </li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Load data and display record holders
+        async function loadRecordHolders() {
+            try {
+                const response = await fetch('../data/tunisia/tunisia_swimming_records.json');
+                const data = await response.json();
+                
+                const recordHolders = analyzeRecordHolders(data);
+                renderRecordHolders(recordHolders);
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('stars-container').innerHTML = `
+                    <div class="no-data">
+                        <h2>Error Loading Data</h2>
+                        <p>Unable to load swimming records.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize on page load
+        loadRecordHolders();
+    </script>
+</body>
+</html>

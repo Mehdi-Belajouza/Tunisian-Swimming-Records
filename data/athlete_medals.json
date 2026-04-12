@@ -1,0 +1,295 @@
+[
+  {
+    "name": "Oussama Mellouli",
+    "olympic": {
+      "gold": [
+        "1500m Freestyle (Beijing 2008)",
+        "10km Open Water (London 2012)"
+      ],
+      "silver": [
+        "1500m Freestyle (London 2012)"
+      ],
+      "bronze": [
+        "400m Freestyle (Athens 2004)"
+      ]
+    },
+    "world_championship": {
+      "gold": [
+        "1500m Freestyle (2009 Rome)",
+        "800m Freestyle (2007 Melbourne)",
+        "1500m Freestyle (2007 Melbourne)"
+      ],
+      "silver": [
+        "400m Freestyle (2007 Melbourne)",
+        "5km Open Water (2015 Kazan)"
+      ],
+      "bronze": []
+    },
+    "world_cup": {
+      "gold": [
+        "Multiple World Cup victories 2007-2012"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [
+        "Multiple gold medals 2007-2011"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [
+        "Multiple African Championships gold medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [
+        "Multiple Mediterranean Games gold medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 13,
+    "bio": "Tunisia's most decorated swimmer, Olympic and World Champion, first Tunisian Olympic swimming gold medalist"
+  },
+  {
+    "name": "Ahmed Hafnaoui",
+    "olympic": {
+      "gold": [
+        "400m Freestyle (Tokyo 2020)"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "world_championship": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_cup": {
+      "gold": [
+        "400m/800m Freestyle World Cup medals (2021-2024)"
+      ],
+      "silver": [
+        "Multiple World Cup silver medals"
+      ],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [
+        "African Championships medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 4,
+    "bio": "Olympic Champion Tokyo 2020, youngest Tunisian Olympic swimming gold medalist, rising star"
+  },
+  {
+    "name": "Ghada Ghali",
+    "olympic": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_championship": {
+      "gold": [],
+      "silver": [],
+      "bronze": [
+        "800m Freestyle (2005 Montreal)"
+      ]
+    },
+    "world_cup": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [
+        "Multiple Arab Games medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [
+        "Multiple African Championships medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [
+        "Mediterranean Games medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 4,
+    "bio": "First Tunisian woman to win a World Championship medal, African and Arab champion"
+  },
+  {
+    "name": "Ahmed Jaouadi",
+    "olympic": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_championship": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_cup": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [
+        "Multiple Arab Games gold medals (2023)"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [
+        "African Championships gold medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 2,
+    "bio": "National record holder, African and Arab Games champion, World Championships participant"
+  },
+  {
+    "name": "Ayoub Hafnaoui",
+    "olympic": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_championship": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_cup": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [
+        "Arab Games medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 1,
+    "bio": "National team member, Arab Games medalist"
+  },
+  {
+    "name": "Taki Mrabet",
+    "olympic": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_championship": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_cup": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [
+        "African Championships medals"
+      ],
+      "silver": [],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 1,
+    "bio": "National record holder, African Championships medalist"
+  },
+  {
+    "name": "Wassim Elloumi",
+    "olympic": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_championship": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "world_cup": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "arab_games": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "african": {
+      "gold": [],
+      "silver": [
+        "African Championships silver medals"
+      ],
+      "bronze": []
+    },
+    "mediterranean": {
+      "gold": [],
+      "silver": [],
+      "bronze": []
+    },
+    "total_medals": 1,
+    "bio": "National team member, African Championships medalist"
+  }
+]

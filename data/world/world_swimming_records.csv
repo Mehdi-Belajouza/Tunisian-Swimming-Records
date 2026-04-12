@@ -1,0 +1,94 @@
+Course,Category,Event,Time,Record Type,Swimmer,Club/Nation,Date,Meet,Location
+Long Course,Men,50m freestyle,20.91,,ss,César Cielo,Brazil,18 December 2009,Brazilian Championships
+Long Course,Men,50m freestyle,20.88,,#,Cameron McEvoy,Australia,20 March 2026,China Open
+Long Course,Men,100m freestyle,46.40,,,Pan Zhanle,China,31 July 2024,Olympic Games
+Long Course,Men,200m freestyle,1:42.00,,ss,Paul Biedermann,Germany,28 July 2009,World Championships
+Long Course,Men,400m freestyle,3:39.96,,,Lukas Märtens,Germany,12 April 2025,Swim Open Stockholm
+Long Course,Men,800m freestyle,7:32.12,,ss,Zhang Lin,China,29 July 2009,World Championships
+Long Course,Men,1500m freestyle,14:30.67,,,Bobby Finke,United States,4 August 2024,Olympic Games
+Long Course,Men,50m backstroke,23.55,,sf,Kliment Kolesnikov,Russia,27 July 2023,Russian Cup
+Long Course,Men,100m backstroke,51.60,,,Thomas Ceccon,Italy,20 June 2022,World Championships
+Long Course,Men,200m backstroke,1:51.92,,ss,Aaron Peirsol,United States,31 July 2009,World Championships
+Long Course,Men,50m breaststroke,25.95,,sf,Adam Peaty,Great Britain,25 July 2017,World Championships
+Long Course,Men,100m breaststroke,56.88,,sf,Adam Peaty,Great Britain,21 July 2019,World Championships
+Long Course,Men,200m breaststroke,2:05.48,,,Qin Haiyang,China,28 July 2023,World Championships
+Long Course,Men,50m butterfly,22.27,,,Andriy Govorov,Ukraine,1 July 2018,Sette Colli Trophy
+Long Course,Men,100m butterfly,49.45,,,Caeleb Dressel,United States,31 July 2021,Olympic Games
+Long Course,Men,200m butterfly,1:50.34,,,Kristóf Milák,Hungary,21 June 2022,World Championships
+Long Course,Men,200m individual medley,1:52.69,,sf,Léon Marchand,France,30 July 2025,World Championships
+Long Course,Men,400m individual medley,4:02.50,,,Léon Marchand,France,23 July 2023,World Championships
+Long Course,Men,4x100m freestyle relay,3:08.24,,ss,Michael Phelps (47.51)Garrett Weber-Gale (47.02)Cullen Jones (47.65)Jason Lezak (46.06),United States,11 August 2008,Olympic Games
+Long Course,Men,4x200m freestyle relay,6:58.55,,ss,Michael Phelps (1:44.49)Ricky Berens (1:44.13)David Walters (1:45.47)Ryan Lochte (1:44.46),United States,31 July 2009,World Championships
+Long Course,Men,4x100m medley relay,3:26.78,,,Ryan Murphy (52.31)Michael Andrew (58.49)Caeleb Dressel (49.03)Zach Apple (46.95),United States,1 August 2021,Olympic Games
+Long Course,Women,50m freestyle,23.61,,sf,Sarah Sjöström,Sweden,29 July 2023,World Championships
+Long Course,Women,100m freestyle,51.71,,r,Sarah Sjöström,Sweden,23 July 2017,World Championships
+Long Course,Women,200m freestyle,1:52.23,,,Ariarne Titmus,Australia,12 June 2024,Australian Olympic Trials
+Long Course,Women,400m freestyle,3:54.18,,,Summer McIntosh,Canada,7 June 2025,Canadian Trials
+Long Course,Women,800m freestyle,8:04.12,,,Katie Ledecky,United States,3 May 2025,TYR Pro Swim Series
+Long Course,Women,1500m freestyle,15:20.48,,,Katie Ledecky,United States,16 May 2018,TYR Pro Swim Series
+Long Course,Women,50m backstroke,26.86,,,Kaylee McKeown,Australia,20 October 2023,World Cup
+Long Course,Women,100m backstroke,57.13,,,Regan Smith,United States,18 June 2024,U.S. Olympic Trials
+Long Course,Women,200m backstroke,2:03.14,,,Kaylee McKeown,Australia,10 March 2023,NSW State Championships
+Long Course,Women,50m breaststroke,29.16,,,Rūta Meilutytė,Lithuania,30 July 2023,World Championships
+Long Course,Women,100m breaststroke,1:04.13,,,Lilly King,United States,25 July 2017,World Championships
+Long Course,Women,200m breaststroke,2:17.55,,,Evgeniia Chikunova,Russia,21 April 2023,Russian Championships
+Long Course,Women,50m butterfly,24.43,,,Sarah Sjöström,Sweden,5 July 2014,Swedish Championships
+Long Course,Women,100m butterfly,54.60,,,Gretchen Walsh,United States,3 May 2025,TYR Pro Swim Series
+Long Course,Women,200m butterfly,2:01.81,,ss,Liu Zige,China,21 October 2009,Chinese National Games
+Long Course,Women,200m individual medley,2:05.70,,,Summer McIntosh,Canada,9 June 2025,Canadian Trials
+Long Course,Women,400m individual medley,4:23.65,,,Summer McIntosh,Canada,11 June 2025,Canadian Trials
+Long Course,Women,4x100m freestyle relay,3:27.96,,,Mollie O'Callaghan (52.08)Shayna Jack (51.69)Meg Harris (52.29)Emma McKeon (51.90),Australia,23 July 2023,World Championships
+Long Course,Women,4x200m freestyle relay,7:37.50,,,Mollie O'Callaghan (1:53.66)Shayna Jack (1:55.63)Brianna Throssell (1:55.80)Ariarne Titmus (1:52.41),Australia,27 July 2023,World Championships
+Long Course,Women,4x100m medley relay,3:49.34,,,Regan Smith (57.57)Kate Douglass (1:04.27)Gretchen Walsh (54.98)Torri Huske (52.52),United States,3 August 2025,World Championships
+Long Course,Mixed Relay,4x100m freestyle relay,3:18.48,,,Jack Alexy (46.91)Patrick Sammon (46.70)Kate Douglass (52.43)Torri Huske (52.44),United States,2 August 2025,World Championships
+Long Course,Mixed Relay,4x100m medley relay,3:37.43,,,Ryan Murphy (52.08)Nic Fink (58.29)Gretchen Walsh (55.18)Torri Huske (51.88),United States,3 August 2024,Olympic Games
+Short Course,Men,50m freestyle,19.90,,sf,Jordan Crooks,Cayman Islands,14 December 2024,World Championships
+Short Course,Men,100m freestyle,44.84,,,Kyle Chalmers,Australia,29 October 2021,World Cup
+Short Course,Men,200m freestyle,1:38.61,,,Luke Hobson,United States,15 December 2024,World Championships
+Short Course,Men,400m freestyle,3:32.25,,,Yannick Agnel,France,15 November 2012,French Nationals
+Short Course,Men,800m freestyle,7:20.46,,,Daniel Wiffen,Ireland,10 December 2023,European Championships
+Short Course,Men,1500m freestyle,14:06.88,,,Florian Wellbrock,Germany,21 December 2021,World Championships
+Short Course,Men,50m backstroke,22.11,,,Kliment Kolesnikov,Russia,23 November 2022,Solidarity Games
+Short Course,Men,100m backstroke,48.16,,,Hubert Kós,Hungary,25 October 2025,World Cup
+Short Course,Men,200m backstroke,1:45.12,,,Hubert Kós,Hungary,23 October 2025,World Cup
+Short Course,Men,50m breaststroke,24.95,,,Emre Sakçı,Turkey,27 December 2021,Turkish Championships
+Short Course,Men,100m breaststroke,55.28,,,Ilya Shymanovich,Belarus,26 November 2021,International Swimming League
+Short Course,Men,200m breaststroke,1:59.52,,,Caspar Corbeau,Netherlands,25 October 2025,World Cup
+Short Course,Men,50m butterfly,21.32,,,Noè Ponti,Switzerland,11 December 2024,World Championships
+Short Course,Men,100m butterfly,47.68,,,Joshua Liendo,Canada,23 October 2025,World Cup
+Short Course,Men,200m butterfly,1:46.85,,,Tomoru Honda,Japan,22 October 2022,Japanese Championships
+Short Course,Men,100m individual medley,49.28,,,Caeleb Dressel,United States,22 November 2020,International Swimming League
+Short Course,Men,200m individual medley,1:48.88,,,Léon Marchand,France,1 November 2024,World Cup
+Short Course,Men,400m individual medley,3:54.81,,,Daiya Seto,Japan,20 December 2019,International Swimming League
+Short Course,Men,4x50m freestyle relay,1:21.80,,,Caeleb Dressel (20.43)Ryan Held (20.25)Jack Conger (20.59)Michael Chadwick (20.53),United States,14 December 2018,World Championships
+Short Course,Men,4x50m freestyle relay,1:20.77,,"WB, [, 124, ], ss",Alain Bernard (20.64)Fabien Gilot (20.33)Amaury Leveaux (19.93)Frédérick Bousquet (19.87),France,14 December 2008,European Championships
+Short Course,Men,4x100m freestyle relay,3:01.66,,,Jack Alexy (45.05)Luke Hobson (45.18)Kieran Smith (46.01)Chris Guiliano (45.42),United States,10 December 2024,World Championships
+Short Course,Men,4x200m freestyle relay,6:40.51,,,Luke Hobson (1:38.91)Carson Foster (1:40.77)Shaine Casas (1:40.34)Kieran Smith (1:40.49),United States,13 December 2024,World Championships
+Short Course,Men,4x50m medley relay,1:29.72,,,Lorenzo Mora (22.65)Nicolò Martinenghi (24.95)Matteo Rivolta (21.60)Leonardo Deplano (20.52),Italy,17 December 2022,World Championships
+Short Course,Men,4x100m medley relay,3:18.68,,,Miron Lifintsev (49.31)Kirill Prigoda (55.15)Andrei Minakov (48.80)Egor Kornev (45.42),Russia,15 December 2024,World Championships
+Short Course,Women,50m freestyle,22.83,,,Gretchen Walsh,United States,15 December 2024,World Championships
+Short Course,Women,100m freestyle,49.93,,,Kate Douglass,United States,25 October 2025,World Cup
+Short Course,Women,200m freestyle,1:49.36,,,Mollie O'Callaghan,Australia,24 October 2025,World Cup
+Short Course,Women,400m freestyle,3:50.25,,,Summer McIntosh,Canada,10 December 2024,World Championships
+Short Course,Women,800m freestyle,7:54.00,,,Lani Pallister,Australia,25 October 2025,World Cup
+Short Course,Women,1500m freestyle,15:08.24,,,Katie Ledecky,United States,29 October 2022,World Cup
+Short Course,Women,50m backstroke,25.23,,,Regan Smith,United States,13 December 2024,World Championships
+Short Course,Women,100m backstroke,54.02,,"r, =",Regan Smith,United States,15 December 2024,World Championships
+Short Course,Women,100m backstroke,54.02,,=,Regan Smith,United States,18 October 2025,World Cup
+Short Course,Women,200m backstroke,1:57.33,,,Kaylee McKeown,Australia,25 October 2025,World Cup
+Short Course,Women,50m breaststroke,28.37,,sf,Rūta Meilutytė,Lithuania,17 December 2022,World Championships
+Short Course,Women,100m breaststroke,1:02.36,,=,Rūta Meilutytė,Lithuania,12 October 2013,World Cup
+Short Course,Women,100m breaststroke,1:02.36,,=,Alia Atkinson,Jamaica,6 December 2014,World Championships
+Short Course,Women,100m breaststroke,1:02.36,,=,Alia Atkinson,Jamaica,26 August 2016,World Cup
+Short Course,Women,200m breaststroke,2:12.50,,,Kate Douglass,United States,13 December 2024,World Championships
+Short Course,Women,50m butterfly,23.72,,,Gretchen Walsh,United States,11 October 2025,World Cup
+Short Course,Women,100m butterfly,52.71,,,Gretchen Walsh,United States,14 December 2024,World Championships
+Short Course,Women,200m butterfly,1:59.32,,,Summer McIntosh,Canada,12 December 2024,World Championships
+Short Course,Women,100m individual medley,55.11,,,Gretchen Walsh,United States,13 December 2024,World Championships
+Short Course,Women,200m individual medley,2:01.63,,,Kate Douglass,United States,10 December 2024,World Championships
+Short Course,Women,400m individual medley,4:15.48,,,Summer McIntosh,Canada,14 December 2024,World Championships
+Short Course,Women,4x50m freestyle relay,1:32.50,,tt,Ranomi Kromowidjojo (23.05)Maaike de Waard (23.16)Kim Busch (23.47)Femke Heemskerk (22.82),Netherlands,12 December 2020,Wouda Cup
+Short Course,Women,4x100m freestyle relay,3:25.01,,,Kate Douglass (50.95)Katharine Berkoff (51.38)Alex Shackell (52.01)Gretchen Walsh (50.67),United States,10 December 2024,World Championships
+Short Course,Women,4x200m freestyle relay,7:30.13,,,Alex Walsh (1:53.25)Paige Madden (1:53.18)Katie Grimes (1:53.39)Claire Weinstein (1:50.31),United States,12 December 2024,World Championships
+Short Course,Women,4x50m medley relay,1:42.35,,,Mollie O'Callaghan (25.49)Chelsea Hodges (29.11)Emma McKeon (24.43)Madison Wilson (23.32),Australia,17 December 2022,World Championships
+Short Course,Women,4x100m medley relay,3:40.41,,,Regan Smith (54.02)Lilly King (1:03.02)Gretchen Walsh (52.84)Kate Douglass (50.53),United States,15 December 2024,World Championships

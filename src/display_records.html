@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunisia Swimming Records</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #e30a17 0%, #c70815 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .filter-group select, .filter-group input {
+            padding: 10px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .filter-group select:focus, .filter-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .stats {
+            padding: 20px 30px;
+            background: #e7f3ff;
+            border-left: 5px solid #0066cc;
+            margin: 20px 30px;
+            border-radius: 8px;
+        }
+
+        .stats h3 {
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .table-container {
+            padding: 30px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+        }
+
+        thead th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s;
+        }
+
+        tbody tr:hover {
+            background: #f8f9ff;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        tbody td {
+            padding: 15px;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .event-cell {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .time-cell {
+            font-weight: 700;
+            color: #e30a17;
+            font-size: 15px;
+        }
+
+        .swimmer-cell {
+            color: #0066cc;
+            font-weight: 500;
+        }
+
+        .record-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .record-badge.af {
+            background: #ffd700;
+            color: #856404;
+        }
+
+        .record-badge.wr {
+            background: #28a745;
+            color: white;
+        }
+
+        .section-title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            margin: 30px 30px 0;
+            border-radius: 8px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 60px;
+            color: #6c757d;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .filter-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .table-container {
+                padding: 15px;
+            }
+
+            table {
+                font-size: 12px;
+            }
+
+            thead th, tbody td {
+                padding: 10px 8px;
+            }
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            font-size: 18px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏊 Tunisia Swimming Records</h1>
+            <p>National Records in Swimming - Long Course & Short Course</p>
+        </header>
+
+        <div class="controls">
+            <div class="filter-group">
+                <label for="courseFilter">Course:</label>
+                <select id="courseFilter" onchange="filterRecords()">
+                    <option value="all">All Courses</option>
+                    <option value="Long Course">Long Course (50m)</option>
+                    <option value="Short Course">Short Course (25m)</option>
+                </select>
+
+                <label for="categoryFilter">Category:</label>
+                <select id="categoryFilter" onchange="filterRecords()">
+                    <option value="all">All Categories</option>
+                    <option value="Men">Men</option>
+                    <option value="Women">Women</option>
+                    <option value="Mixed Relay">Mixed Relay</option>
+                </select>
+
+                <label for="searchBox">Search:</label>
+                <input type="text" id="searchBox" placeholder="Search swimmer, event, location..." 
+                       onkeyup="filterRecords()">
+            </div>
+        </div>
+
+        <div class="stats" id="stats">
+            <h3>📊 Statistics</h3>
+            <p id="statsContent">Loading records...</p>
+        </div>
+
+        <div id="recordsDisplay">
+            <div class="loading">Loading Tunisia Swimming Records...</div>
+        </div>
+    </div>
+
+    <script>
+        let allRecords = [];
+
+        // Load the JSON data
+        async function loadRecords() {
+            try {
+                const response = await fetch('../data/tunisia/tunisia_swimming_records.json');
+                const data = await response.json();
+                
+                // Flatten the data structure for easier filtering
+                allRecords = [];
+                
+                for (const [courseType, categories] of Object.entries(data)) {
+                    for (const [category, records] of Object.entries(categories)) {
+                        allRecords = allRecords.concat(records);
+                    }
+                }
+                
+                console.log(`Loaded ${allRecords.length} records`);
+                displayRecords(allRecords);
+                updateStats(allRecords);
+            } catch (error) {
+                document.getElementById('recordsDisplay').innerHTML = 
+                    '<div class="no-data">Error loading records. Please make sure to run the Python scraper first!</div>';
+                console.error('Error loading records:', error);
+            }
+        }
+
+        function displayRecords(records) {
+            if (records.length === 0) {
+                document.getElementById('recordsDisplay').innerHTML = 
+                    '<div class="no-data">No records found matching your filters.</div>';
+                return;
+            }
+
+            // Group by course and category
+            const grouped = {};
+            records.forEach(record => {
+                const key = `${record.course} - ${record.category}`;
+                if (!grouped[key]) {
+                    grouped[key] = [];
+                }
+                grouped[key].push(record);
+            });
+
+            let html = '';
+            
+            for (const [group, groupRecords] of Object.entries(grouped)) {
+                html += `<div class="section-title">${group}</div>`;
+                html += '<div class="table-container">';
+                html += `
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Time</th>
+                                <th>Type</th>
+                                <th>Swimmer</th>
+                                <th>Club / Team</th>
+                                <th>Date</th>
+                                <th>Meet</th>
+                                <th>Location</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                groupRecords.forEach(record => {
+                    const recordBadge = record.record_type && record.record_type.trim() ? 
+                        `<span class="record-badge ${record.record_type.toLowerCase()}">${record.record_type}</span>` : '';
+                    
+                    html += `
+                        <tr>
+                            <td class="event-cell">${record.event}</td>
+                            <td class="time-cell">${record.time}</td>
+                            <td>${recordBadge}</td>
+                            <td class="swimmer-cell">${record.swimmer}</td>
+                            <td>${record.club}</td>
+                            <td>${record.date}</td>
+                            <td>${record.meet}</td>
+                            <td>${record.location}</td>
+                        </tr>
+                    `;
+                });
+
+                html += '</tbody></table></div>';
+            }
+
+            document.getElementById('recordsDisplay').innerHTML = html;
+        }
+
+        function updateStats(records) {
+            const longCourse = records.filter(r => r.course === 'Long Course').length;
+            const shortCourse = records.filter(r => r.course === 'Short Course').length;
+            const men = records.filter(r => r.category === 'Men').length;
+            const women = records.filter(r => r.category === 'Women').length;
+            const mixed = records.filter(r => r.category === 'Mixed Relay').length;
+
+            document.getElementById('statsContent').innerHTML = `
+                <strong>Total Records:</strong> ${records.length} | 
+                <strong>Long Course:</strong> ${longCourse} | 
+                <strong>Short Course:</strong> ${shortCourse} | 
+                <strong>Men:</strong> ${men} | 
+                <strong>Women:</strong> ${women} | 
+                <strong>Mixed:</strong> ${mixed}
+            `;
+        }
+
+        function filterRecords() {
+            const courseFilter = document.getElementById('courseFilter').value;
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const searchText = document.getElementById('searchBox').value.toLowerCase();
+
+            let filtered = allRecords;
+
+            if (courseFilter !== 'all') {
+                filtered = filtered.filter(r => r.course === courseFilter);
+            }
+
+            if (categoryFilter !== 'all') {
+                filtered = filtered.filter(r => r.category === categoryFilter);
+            }
+
+            if (searchText) {
+                filtered = filtered.filter(r => 
+                    r.swimmer.toLowerCase().includes(searchText) ||
+                    r.event.toLowerCase().includes(searchText) ||
+                    r.location.toLowerCase().includes(searchText) ||
+                    r.meet.toLowerCase().includes(searchText)
+                );
+            }
+
+            displayRecords(filtered);
+            updateStats(filtered);
+        }
+
+        // Load records when page loads
+        window.onload = loadRecords;
+    </script>
+</body>
+</html>

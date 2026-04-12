@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunisia's Swimming Legends - Olympic & World Championship Medals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 1600px;
+            margin: 0 auto 30px;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 2.5em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header .subtitle {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 150px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .content {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .medals-container {
+            display: grid;
+            gap: 25px;
+        }
+
+        .athlete-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 30px;
+            align-items: start;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .athlete-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .athlete-rank {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .athlete-rank.gold {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+
+        .athlete-rank.silver {
+            background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+        }
+
+        .athlete-rank.bronze {
+            background: linear-gradient(135deg, #CD7F32 0%, #8B4513 100%);
+        }
+
+        .athlete-details {
+            flex: 1;
+        }
+
+        .athlete-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .athlete-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .athlete-bio {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .medal-totals {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .total-medal-count {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .medals-section {
+            margin-bottom: 25px;
+        }
+
+        .medals-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .competition-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .medals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .medal-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid;
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .medal-item.gold {
+            border-left-color: #FFD700;
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFFAEB 100%);
+        }
+
+        .medal-item.silver {
+            border-left-color: #C0C0C0;
+            background: linear-gradient(135deg, #F5F5F5 0%, #FAFAFA 100%);
+        }
+
+        .medal-item.bronze {
+            border-left-color: #CD7F32;
+            background: linear-gradient(135deg, #FFF3E6 0%, #FFF5EB 100%);
+        }
+
+        .medal-icon {
+            font-size: 2em;
+            line-height: 1;
+        }
+
+        .medal-details {
+            flex: 1;
+        }
+
+        .medal-event {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+
+        .medal-info {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .no-medals {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        .no-medals-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            font-size: 1.3em;
+        }
+
+        .loading-spinner {
+            font-size: 3em;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .filter-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .athlete-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .athlete-rank {
+                margin: 0 auto;
+            }
+
+            .athlete-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .medals-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="breadcrumb">
+            <a href="index.html">← Back to Home</a>
+        </div>
+        <h1>🏆 Tunisia's Swimming Legends</h1>
+        <div class="subtitle">Olympic and World Championship Medal Winners</div>
+        <div class="stats-bar" id="statsBar">
+            <!-- Stats will be loaded dynamically -->
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="filter-section">
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterMedals('all')">🏅 All Athletes</button>
+                <button class="filter-btn" onclick="filterMedals('olympic')">🏅 Olympic Medalists</button>
+                <button class="filter-btn" onclick="filterMedals('world')">🌍 World Championship</button>
+                <button class="filter-btn" onclick="filterMedals('worldcup')">🏆 World Cup</button>
+                <button class="filter-btn" onclick="filterMedals('arab')">🇦🇪 Arab Competitions</button>
+                <button class="filter-btn" onclick="filterMedals('african')">🌍 African Competitions</button>
+                <button class="filter-btn" onclick="filterMedals('gold')">🥇 Gold Medalists</button>
+            </div>
+        </div>
+
+        <div class="medals-container" id="medalsContainer">
+            <div class="loading">
+                <div class="loading-spinner">⏳</div>
+                <div>Loading medal data...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allAthletes = [];
+        let currentFilter = 'all';
+
+        // Load athlete medals on page load
+        async function loadMedals() {
+            try {
+                const response = await fetch('../data/athlete_medals.json');
+                allAthletes = await response.json();
+                
+                // Remove duplicates based on name
+                const uniqueAthletes = [];
+                const seenNames = new Set();
+                for (const athlete of allAthletes) {
+                    if (!seenNames.has(athlete.name)) {
+                        seenNames.add(athlete.name);
+                        uniqueAthletes.push(athlete);
+                    }
+                }
+                allAthletes = uniqueAthletes;
+                
+                displayStats();
+                displayAthletes(allAthletes);
+            } catch (error) {
+                console.error('Error loading medals:', error);
+                document.getElementById('medalsContainer').innerHTML = `
+                    <div class="no-medals">
+                        <div class="no-medals-icon">⚠️</div>
+                        <div>Error loading medal data</div>
+                    </div>
+                `;
+            }
+        }
+
+        function displayStats() {
+            const totalAthletes = allAthletes.length;
+            const totalMedals = allAthletes.reduce((sum, a) => sum + a.total_medals, 0);
+            const olympicMedals = allAthletes.reduce((sum, a) => 
+                sum + a.olympic.gold.length + a.olympic.silver.length + a.olympic.bronze.length, 0);
+            const worldMedals = allAthletes.reduce((sum, a) => 
+                sum + a.world_championship.gold.length + a.world_championship.silver.length + a.world_championship.bronze.length, 0);
+            const wcupMedals = allAthletes.reduce((sum, a) => 
+                sum + (a.world_cup ? a.world_cup.gold.length + a.world_cup.silver.length + a.world_cup.bronze.length : 0), 0);
+            const arabMedals = allAthletes.reduce((sum, a) => 
+                sum + (a.arab_games ? a.arab_games.gold.length + a.arab_games.silver.length + a.arab_games.bronze.length : 0), 0);
+            const africanMedals = allAthletes.reduce((sum, a) => 
+                sum + (a.african ? a.african.gold.length + a.african.silver.length + a.african.bronze.length : 0), 0);
+            const medMedals = allAthletes.reduce((sum, a) => 
+                sum + (a.mediterranean ? a.mediterranean.gold.length + a.mediterranean.silver.length + a.mediterranean.bronze.length : 0), 0);
+
+            const statsBar = document.getElementById('statsBar');
+            statsBar.innerHTML = `
+                <div class="stat-card">
+                    <div class="stat-number">${totalAthletes}</div>
+                    <div class="stat-label">Decorated Athletes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${totalMedals}</div>
+                    <div class="stat-label">Total Medals</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${olympicMedals}</div>
+                    <div class="stat-label">Olympic</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${worldMedals}</div>
+                    <div class="stat-label">World Ch.</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${wcupMedals}</div>
+                    <div class="stat-label">World Cup</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${arabMedals}</div>
+                    <div class="stat-label">Arab</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${africanMedals}</div>
+                    <div class="stat-label">African</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">${medMedals}</div>
+                    <div class="stat-label">Mediterranean</div>
+                </div>
+            `;
+        }
+
+        function displayAthletes(athletes) {
+            const container = document.getElementById('medalsContainer');
+            
+            if (!athletes || athletes.length === 0) {
+                container.innerHTML = `
+                    <div class="no-medals">
+                        <div class="no-medals-icon">🏊</div>
+                        <div>No athletes found for this filter</div>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = '';
+            
+            athletes.forEach((athlete, index) => {
+                const rank = index + 1;
+                const rankClass = rank === 1 ? 'gold' : rank === 2 ? 'silver' : rank === 3 ? 'bronze' : '';
+                
+                const olympicGold = athlete.olympic.gold.length;
+                const olympicSilver = athlete.olympic.silver.length;
+                const olympicBronze = athlete.olympic.bronze.length;
+                const worldGold = athlete.world_championship.gold.length;
+                const worldSilver = athlete.world_championship.silver.length;
+                const worldBronze = athlete.world_championship.bronze.length;
+                const wcupGold = athlete.world_cup ? athlete.world_cup.gold.length : 0;
+                const wcupSilver = athlete.world_cup ? athlete.world_cup.silver.length : 0;
+                const wcupBronze = athlete.world_cup ? athlete.world_cup.bronze.length : 0;
+                const arabGold = athlete.arab_games ? athlete.arab_games.gold.length : 0;
+                const arabSilver = athlete.arab_games ? athlete.arab_games.silver.length : 0;
+                const arabBronze = athlete.arab_games ? athlete.arab_games.bronze.length : 0;
+                const africanGold = athlete.african ? athlete.african.gold.length : 0;
+                const africanSilver = athlete.african ? athlete.african.silver.length : 0;
+                const africanBronze = athlete.african ? athlete.african.bronze.length : 0;
+                const medGold = athlete.mediterranean ? athlete.mediterranean.gold.length : 0;
+                const medSilver = athlete.mediterranean ? athlete.mediterranean.silver.length : 0;
+                const medBronze = athlete.mediterranean ? athlete.mediterranean.bronze.length : 0;
+                
+                const hasOlympic = olympicGold + olympicSilver + olympicBronze > 0;
+                const hasWorld = worldGold + worldSilver + worldBronze > 0;
+                const hasWorldCup = wcupGold + wcupSilver + wcupBronze > 0;
+                const hasArab = arabGold + arabSilver + arabBronze > 0;
+                const hasAfrican = africanGold + africanSilver + africanBronze > 0;
+                const hasMed = medGold + medSilver + medBronze > 0;
+
+                html += `
+                    <div class="athlete-card" data-olympic="${hasOlympic}" data-world="${hasWorld}" data-gold="${olympicGold + worldGold > 0}">
+                        <div class="athlete-rank ${rankClass}">#${rank}</div>
+                        <div class="athlete-details">
+                            <div class="athlete-header">
+                                <div>
+                                    <div class="athlete-name">${athlete.name}</div>
+                                    ${athlete.bio ? `<div class="athlete-bio">${athlete.bio}</div>` : ''}
+                                </div>
+                                <div class="medal-totals">
+                                    <div class="total-medal-count">${athlete.total_medals} Medal${athlete.total_medals > 1 ? 's' : ''}</div>
+                                </div>
+                            </div>
+
+                            ${hasOlympic ? `
+                                <div class="medals-section">
+                                    <div class="competition-title">🏅 Olympic Games</div>
+                                    <div class="medals-grid">
+                                        ${athlete.olympic.gold.map(medal => `
+                                            <div class="medal-item gold">
+                                                <div class="medal-icon">🥇</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.olympic.silver.map(medal => `
+                                            <div class="medal-item silver">
+                                                <div class="medal-icon">🥈</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.olympic.bronze.map(medal => `
+                                            <div class="medal-item bronze">
+                                                <div class="medal-icon">🥉</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            ${hasWorld ? `
+                                <div class="medals-section">
+                                    <div class="competition-title">🌍 World Championships</div>
+                                    <div class="medals-grid">
+                                        ${athlete.world_championship.gold.map(medal => `
+                                            <div class="medal-item gold">
+                                                <div class="medal-icon">🥇</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.world_championship.silver.map(medal => `
+                                            <div class="medal-item silver">
+                                                <div class="medal-icon">🥈</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.world_championship.bronze.map(medal => `
+                                            <div class="medal-item bronze">
+                                                <div class="medal-icon">🥉</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            ${hasWorldCup ? `
+                                <div class="medals-section">
+                                    <div class="competition-title">🏆 FINA World Cup</div>
+                                    <div class="medals-grid">
+                                        ${athlete.world_cup.gold.map(medal => `
+                                            <div class="medal-item gold">
+                                                <div class="medal-icon">🥇</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.world_cup.silver.map(medal => `
+                                            <div class="medal-item silver">
+                                                <div class="medal-icon">🥈</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.world_cup.bronze.map(medal => `
+                                            <div class="medal-item bronze">
+                                                <div class="medal-icon">🥉</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            ${hasArab ? `
+                                <div class="medals-section">
+                                    <div class="competition-title">🇦🇪 Arab Games / Championships</div>
+                                    <div class="medals-grid">
+                                        ${athlete.arab_games.gold.map(medal => `
+                                            <div class="medal-item gold">
+                                                <div class="medal-icon">🥇</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.arab_games.silver.map(medal => `
+                                            <div class="medal-item silver">
+                                                <div class="medal-icon">🥈</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.arab_games.bronze.map(medal => `
+                                            <div class="medal-item bronze">
+                                                <div class="medal-icon">🥉</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            ${hasAfrican ? `
+                                <div class="medals-section">
+                                    <div class="competition-title">🌍 African Games / Championships</div>
+                                    <div class="medals-grid">
+                                        ${athlete.african.gold.map(medal => `
+                                            <div class="medal-item gold">
+                                                <div class="medal-icon">🥇</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.african.silver.map(medal => `
+                                            <div class="medal-item silver">
+                                                <div class="medal-icon">🥈</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.african.bronze.map(medal => `
+                                            <div class="medal-item bronze">
+                                                <div class="medal-icon">🥉</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            ${hasMed ? `
+                                <div class="medals-section">
+                                    <div class="competition-title">🌊 Mediterranean Games</div>
+                                    <div class="medals-grid">
+                                        ${athlete.mediterranean.gold.map(medal => `
+                                            <div class="medal-item gold">
+                                                <div class="medal-icon">🥇</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.mediterranean.silver.map(medal => `
+                                            <div class="medal-item silver">
+                                                <div class="medal-icon">🥈</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                        ${athlete.mediterranean.bronze.map(medal => `
+                                            <div class="medal-item bronze">
+                                                <div class="medal-icon">🥉</div>
+                                                <div class="medal-details">
+                                                    <div class="medal-event">${medal}</div>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function filterMedals(filter) {
+            currentFilter = filter;
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            let filtered = allAthletes;
+
+            switch(filter) {
+                case 'olympic':
+                    filtered = allAthletes.filter(a => 
+                        a.olympic.gold.length + a.olympic.silver.length + a.olympic.bronze.length > 0
+                    );
+                    break;
+                case 'world':
+                    filtered = allAthletes.filter(a => 
+                        a.world_championship.gold.length + a.world_championship.silver.length + a.world_championship.bronze.length > 0
+                    );
+                    break;
+                case 'worldcup':
+                    filtered = allAthletes.filter(a => 
+                        a.world_cup && (a.world_cup.gold.length + a.world_cup.silver.length + a.world_cup.bronze.length > 0)
+                    );
+                    break;
+                case 'arab':
+                    filtered = allAthletes.filter(a => 
+                        a.arab_games && (a.arab_games.gold.length + a.arab_games.silver.length + a.arab_games.bronze.length > 0)
+                    );
+                    break;
+                case 'african':
+                    filtered = allAthletes.filter(a => 
+                        a.african && (a.african.gold.length + a.african.silver.length + a.african.bronze.length > 0)
+                    );
+                    break;
+                case 'gold':
+                    filtered = allAthletes.filter(a => 
+                        a.olympic.gold.length + a.world_championship.gold.length + 
+                        (a.world_cup ? a.world_cup.gold.length : 0) +
+                        (a.arab_games ? a.arab_games.gold.length : 0) +
+                        (a.african ? a.african.gold.length : 0) +
+                        (a.mediterranean ? a.mediterranean.gold.length : 0) > 0
+                    );
+                    break;
+            }
+
+            displayAthletes(filtered);
+        }
+
+        // Load medals when page loads
+        window.addEventListener('DOMContentLoaded', loadMedals);
+    </script>
+</body>
+</html>

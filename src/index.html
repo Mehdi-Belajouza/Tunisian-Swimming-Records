@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tunisia Swimming Records - National Database</title>
+    <style>
+        :root {
+            --bg-top: #cbeafc; /* calming pool pastel blue */
+            --bg-mid: #a0d8f7; /* slightly deeper aqua */
+            --bg-bottom: #76c6f2; /* aquatic blue */
+            --accent-main: #005b9f; /* high contrast deep oceanic blue */
+            --accent-dark: #004275;
+            --accent-light: #0077cc;
+            --card-bg: #ffffff; /* pure white for sharp, clean contrast */
+            --text-main: #102a43; /* deep navy text, readable and sharp */
+            --text-muted: #334e68;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 91, 159, 0.06), 0 2px 4px -1px rgba(0, 91, 159, 0.04);
+            --shadow-md: 0 10px 15px -3px rgba(0, 91, 159, 0.08), 0 4px 6px -2px rgba(0, 91, 159, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 91, 159, 0.12), 0 10px 10px -5px rgba(0, 91, 159, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px 50px;
+            max-width: 900px;
+            margin: 0 auto 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.8em;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            font-weight: 500;
+            color: var(--accent-main);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.1em;
+            color: var(--text-muted);
+            font-weight: 400;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+        }
+
+        .maps-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .map-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: var(--shadow-md);
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) both;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .map-card:nth-child(1) { animation-delay: 0.1s; }
+        .map-card:nth-child(2) { animation-delay: 0.15s; }
+        .map-card:nth-child(3) { animation-delay: 0.2s; }
+        .map-card:nth-child(4) { animation-delay: 0.25s; }
+        .map-card:nth-child(5) { animation-delay: 0.3s; }
+        .map-card:nth-child(6) { animation-delay: 0.35s; }
+
+        .map-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .map-icon {
+            font-size: 5em;
+            margin-bottom: 30px;
+            text-align: center;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .map-card:hover .map-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .map-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .map-card p {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1em;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .map-card .cta {
+            padding: 18px 30px;
+            background: var(--accent-main);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .map-card:hover .cta {
+            background: var(--accent-dark);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .map-card .cta:active {
+            transform: scale(0.97);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Info Section */
+        .info-section {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            background: transparent;
+            padding: 0 20px;
+            color: var(--text-main);
+        }
+
+        .info-section h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 50px;
+            text-align: center;
+            letter-spacing: -1px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--accent-light);
+            border-radius: 24px 24px 0 0;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .info-card h3 {
+            color: var(--text-main);
+            font-size: 1.4em;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05em;
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+            color: var(--text-muted);
+            font-size: 1.05em;
+        }
+
+        .info-card ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            max-width: 900px;
+            margin: 80px auto;
+            background: linear-gradient(135deg, var(--accent-main) 0%, var(--accent-dark) 100%);
+            border-radius: 30px;
+            padding: 60px 40px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .contact-section p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-email {
+            background: #ffffff;
+            color: var(--accent-dark);
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            display: inline-block;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            margin-top: 30px;
+        }
+
+        .contact-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            background: #f8fafc;
+        }
+        
+        .contact-email:active {
+            transform: scale(0.96);
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 40px 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(0, 91, 159, 0.15);
+        }
+
+        .footer p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 30px;
+            }
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+            .maps-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            .map-card {
+                padding: 40px 25px;
+                border-radius: 20px;
+            }
+            .map-icon {
+                font-size: 4em;
+            }
+            .info-section h2 {
+                font-size: 2em;
+            }
+            .info-card {
+                padding: 30px;
+            }
+            .contact-section {
+                padding: 50px 25px;
+                margin: 60px 20px;
+                border-radius: 20px;
+            }
+            .contact-section h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🏊 Tunisia Swimming Records</h1>
+        <p class="subtitle">National Swimming Records Database & Comparison</p>
+        <p class="tagline" style="font-size: 0.95em; margin-top: 10px;">Long Course (50m) • Short Course (25m)</p>
+    </div>
+
+    <div class="maps-container">
+        <!-- Tunisia Card -->
+        <div class="map-card" onclick="navigateTo('tunisia')">
+            <div class="map-icon">🇹🇳</div>
+            <h2>Tunisia Records</h2>
+            <p>View all national swimming records set by Tunisian athletes</p>
+            <button class="cta">View Records</button>
+        </div>
+
+        <!-- Record Holders Card -->
+        <div class="map-card" onclick="window.location.href='rising_stars.html'">
+            <div class="map-icon">🏆</div>
+            <h2>Record Holders</h2>
+            <p>Athletes with multiple national swimming records</p>
+            <button class="cta">View Athletes</button>
+        </div>
+
+        <!-- Egypt Card -->
+        <div class="map-card" onclick="navigateTo('egypt')">
+            <div class="map-icon">🇪🇬</div>
+            <h2>Egypt Records</h2>
+            <p>Compare Tunisia and Egypt national swimming records</p>
+            <button class="cta">Compare</button>
+        </div>
+
+        <!-- Arab World Card -->
+        <div class="map-card" onclick="navigateTo('arab')">
+            <div class="map-icon">🗺️</div>
+            <h2>Arab Records</h2>
+            <p>Best swimming times across all 22 Arab nations</p>
+            <button class="cta">Compare</button>
+        </div>
+
+        <!-- Africa Card -->
+        <div class="map-card" onclick="navigateTo('africa')">
+            <div class="map-icon">🌍</div>
+            <h2>African Records</h2>
+            <p>Compare Tunisia records with continental African records</p>
+            <button class="cta">Compare</button>
+        </div>
+
+        <!-- World Card -->
+        <div class="map-card" onclick="navigateTo('world')">
+            <div class="map-icon">🌎</div>
+            <h2>World Records</h2>
+            <p>Compare national records with world records across all events</p>
+            <button class="cta">Compare</button>
+        </div>
+    </div>
+
+    <!-- Information Section -->
+    <div class="info-section">
+        <h2>What You'll Find Here</h2>
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>📊 Complete Records Database</h3>
+                <p>Access comprehensive swimming records for Tunisia, including:</p>
+                <ul>
+                    <li>Long Course (50m pool) records</li>
+                    <li>Short Course (25m pool) records</li>
+                    <li>Men's, Women's, and Mixed Relay events</li>
+                    <li>Historical data with dates and locations</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🔍 Interactive Comparisons</h3>
+                <p>Compare Tunisia's performance against:</p>
+                <ul>
+                    <li>Egypt - Head-to-head national comparison</li>
+                    <li>Arab Records - Best times from 22 Arab nations</li>
+                    <li>Africa - Continental records</li>
+                    <li>World - Global swimming standards</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>� Record Holders</h3>
+                <p>Discover athletes who excel:</p>
+                <ul>
+                    <li>Swimmers with multiple national records</li>
+                    <li>Complete list of their achievements</li>
+                    <li>Event details and dates</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <h2>📧 Contribute Data</h2>
+        <p>Have updated swimming records or corrections to suggest?</p>
+        <p>Help us keep this database accurate and up-to-date!</p>
+        <a href="mailto:belajouza.@et.esiea.com" class="contact-email">Contact Us</a>
+    </div>
+
+    <div class="footer">
+        <p>Data sourced from Wikipedia swimming records</p>
+        <p>Pool types: Long Course (50m) and Short Course (25m)</p>
+    </div>
+
+    <script>
+        function navigateTo(region) {
+            window.location.href = `compare.html?view=${region}`;
+        }
+    </script>
+</body>
+</html>
