@@ -1,102 +1,79 @@
-# 🏊 Tunisia Swimming Records Database
+# 🏊 Tunisia Swimming Records
 
-An interactive web application for comparing Tunisia's national swimming records with Egypt, Africa, Arab nations, and World records. Built with vanilla JavaScript and Python web scraping.
+Hey! This is a web app I built to track Tunisia's national swimming records and compare them with other countries around the world.
 
----
+## Why I built this
 
-## 🚀 Quick Start
+As someone passionate about both web development and Tunisian sports, I wanted to create something useful for our swimming community. Coaches and athletes can now quickly see where Tunisia stands compared to Egypt, other Arab countries, Africa, and world records—all in one place.
 
-### 1. Start the Server
+## What it does
+
+**The main feature:** You can compare Tunisia's swimming records side-by-side with any other country. The app shows you exactly how close (or far) we are from breaking regional or world records.
+
+**Other cool stuff:**
+- See which Tunisian athletes hold multiple national records
+- Search for specific events, swimmers, or countries
+- Filter by pool type (25m or 50m), gender, or swimming style
+- Dynamic country selector that auto-updates when new data is added
+- Gap analysis showing time differences and percentages
+
+## Getting started
+
+**To run it locally:**
+
 ```bash
 python start_server.py
 ```
-Or manually:
-```bash
-python -m http.server 8000
-```
 
-### 2. Open in Browser
-Visit: **http://localhost:8000/src/index.html**
+Then open your browser and go to `http://localhost:8000/src/index.html`
 
-### 3. Update Records (Optional)
+That's it!
+
+**Want to update the records?**
+
 ```bash
 cd scripts
 python scrape_records.py
 ```
 
----
+## How it works
 
-## ✨ Features
+The app uses vanilla JavaScript for the frontend (no frameworks—keeping it simple) and Python scripts to scrape swimming records from Wikipedia. All the data is stored in JSON files, so it loads super fast.
 
-### 🎯 Main Features
-- **6 Interactive Views:**
-  - 🇹🇳 Tunisia National Records
-  - 🏆 Record Holders - Athletes with multiple national records
-  - 🇪🇬 Tunisia vs Egypt Record Comparison
-  - 🗺️ Tunisia vs Arab Records Comparison
-  - 🌍 Tunisia vs Africa Record Comparison
-  - 🌎 Tunisia vs World Record Comparison
+I built a cool auto-detection system: when you add a new country's JSON file to the `data/arab_countries/` folder, it automatically shows up in the comparison dropdown. No code changes needed.
 
-- **🏆 Record Holders Feature:**
-  - Displays athletes who hold 2+ national swimming records
-  - Complete list of each athlete's achievements
-  - Event details, times, dates, and locations
-  - Clean, professional presentation
+## What's inside
 
-- **🌍 Dynamic Country Comparisons:**
-  - Select from 12+ Arab countries for head-to-head comparison
-  - Auto-detection system: new country data files are automatically added to the dropdown
-  - No code changes needed - just add JSON files to `data/arab_countries/`
-  - Extensible system for adding any country's swimming records
+- **Tunisia's complete records** (long course + short course)
+- **22 Arab countries** for comparison
+- **African continental records**
+- **World records**
+- **Clean, modern UI** with professional swimmer photos
 
-- **Comprehensive Data:**
-  - Long Course (50m pool) records
-  - Short Course (25m pool) records
-  - Men's, Women's, and Mixed Relay events
-  - Historical data with dates and locations
-  - Country flags (80+ countries)
-  - 🏊 Swimming style icons
+## The tech stack
 
-- **Search & Filter:**
-  - 🔍 Search by events, swimmers, or countries
-  - Filter by Course (Long/Short)
-  - Filter by Category (Men/Women)
-  - Filter by Event Type (Freestyle, Backstroke, Breaststroke, Butterfly, Medley, Relay)
+- HTML/CSS/JavaScript (vanilla, no libraries)
+- Python for web scraping
+- Wikipedia as the data source
+- Just a simple HTTP server to run it
 
-- **Gap Analysis:**
-  - Time difference in seconds
-  - Percentage difference
-  - Visual indicators showing performance gaps
-  - Highlights when Tunisia holds regional or world records
+## Contributing
+
+Found a mistake in the records? Want to add more countries? Pull requests are welcome! The scraping scripts are in the `/scripts` folder.
+
+## Future ideas
+
+Things I might add later:
+- Mobile app version
+- Export/share specific comparisons
+- Trend analysis over time
+- Training goal calculator based on gap analysis
 
 ---
 
-## 📊 Data Statistics
+Built with 🏊 for the Tunisian swimming community
 
-### Data Sources:
-- All data sourced from Wikipedia swimming records pages
-- Updated via Python web scraping scripts
-- JSON format for fast loading and processing
-
-### Coverage:
-- **Tunisia:** Complete national records database
-- **Egypt:** Full national records
-- **Arab Countries:** 22 nations including Algeria, Morocco, Saudi Arabia, UAE, Qatar, Egypt, and more
-- **Africa:** Continental records
-- **World:** Official world swimming records
-
-### Course Types:
-- Long Course (50m pools)
-- Short Course (25m pools)
-
-### Categories:
-- Men's events
-- Women's events
-- Mixed relays
-
----
-
-## 🎨 Visual Design
+**Questions or suggestions?** Open an issue or reach out!
 
 ### Modern Water-Inspired Theme:
 - **Background:** Calming pool water gradient (light to medium blue)

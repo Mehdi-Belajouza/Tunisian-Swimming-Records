@@ -726,17 +726,94 @@
             box-shadow: 0 0 10px rgba(227, 10, 23, 0.1);
         }
 
+        /* Tablet and small desktop */
+        @media (max-width: 1200px) {
+            .comparison-container {
+                padding: 25px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            table {
+                font-size: 13px;
+            }
+        }
+
+        /* Tablet portrait */
+        @media (max-width: 992px) {
+            .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .tabs {
+                gap: 10px;
+            }
+            
+            .tab {
+                padding: 10px 20px;
+                font-size: 0.95em;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            thead th, tbody td {
+                padding: 10px 8px;
+            }
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+                margin-bottom: 20px;
+            }
+            
             .header h1 {
                 font-size: 1.8em;
             }
 
+            .tabs {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+                padding: 12px 20px;
+            }
+            
+            .comparison-container {
+                padding: 20px 15px;
+                border-radius: 16px;
+            }
+
             table {
                 font-size: 11px;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
             }
 
             thead th, tbody td {
                 padding: 8px 6px;
+            }
+            
+            .event-cell {
+                min-width: 140px;
+                font-size: 13px;
+            }
+            
+            .time-cell {
+                font-size: 14px;
             }
 
            .back-button {
@@ -758,6 +835,53 @@
                 font-size: 0.85em;
                 display: block;
                 text-align: center;
+            }
+            
+            .country-selector {
+                padding-top: 15px !important;
+            }
+            
+            .country-selector label {
+                display: block;
+                margin-bottom: 8px;
+                margin-right: 0 !important;
+            }
+            
+            .country-selector select {
+                width: 100%;
+            }
+            
+            .motivation-banner {
+                padding: 20px;
+            }
+            
+            .motivation-banner h3 {
+                font-size: 1.3em;
+            }
+            
+            .info-banner {
+                padding: 15px 20px;
+            }
+            
+            .legend-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        
+        /* Small mobile */
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            table {
+                font-size: 10px;
+            }
+            
+            .search-box input {
+                font-size: 14px;
+                padding: 10px 15px;
             }
         }
     </style>
