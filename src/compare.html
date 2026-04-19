@@ -177,14 +177,17 @@
         thead th.arab-col { background: #047857; }
         thead th.africa-col { background: #d97706; }
         thead th.world-col { background: #1d4ed8; }
+        thead th.country-col { background: #8B4789; } /* Purple for other countries */
 
         .tunisia-highlight {
-            background: #f0f9ff !important;
-            border-left: 4px solid var(--accent-light);
+            background: linear-gradient(90deg, #d1f4ff 0%, #e8f8ff 100%) !important;
+            border-left: 5px solid var(--accent-main);
+            box-shadow: inset 0 0 0 1px rgba(0, 91, 159, 0.1);
         }
 
         .tunisia-highlight:hover {
-            background: #e0f2fe !important;
+            background: linear-gradient(90deg, #b8ecff 0%, #d1f4ff 100%) !important;
+            box-shadow: inset 0 0 0 1px rgba(0, 91, 159, 0.2);
         }
 
         .country-flag {
@@ -306,6 +309,99 @@
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
         }
 
+        .breadcrumb-nav {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 10px 16px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            color: var(--text-muted);
+            border: 1px solid rgba(0, 91, 159, 0.1);
+            background: var(--bg-top);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--accent-main);
+        }
+
+        .breadcrumb-nav .separator {
+            margin: 0 8px;
+            opacity: 0.5;
+        }
+
+        .breadcrumb-nav .current-page {
+            color: var(--accent-main);
+            font-weight: 700;
+        }
+
+        /* Animated Attention Pointer on the Right - Replaced with Glowing Badge */
+        .discovery-badge {
+            position: absolute;
+            top: -15px;
+            right: -20px;
+            background: linear-gradient(135deg, #ff4757, #cc0000);
+            color: white;
+            font-size: 0.75em;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(255, 71, 87, 0.4);
+            pointer-events: none;
+            z-index: 10;
+            animation: softBounce 2s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .pulse-select {
+            animation: glowingBorder 2s infinite;
+        }
+
+        @keyframes softBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes glowingBorder {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0, 91, 159, 0); border-color: var(--accent-light); }
+            50% { box-shadow: 0 0 0 6px rgba(0, 91, 159, 0.2); border-color: var(--accent-main); }
+        }
+
+        .country-selector {
+            position: relative;
+        }
+
+        .country-selector select.active-selection {
+            background: var(--accent-main) !important;
+            color: white !important;
+            border-color: var(--accent-dark) !important;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 91, 159, 0.3);
+        }
+
+        .country-selector select.active-selection option {
+            background: white;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .breadcrumb-nav {
+                margin-bottom: 15px;
+                padding: 8px 12px;
+                font-size: 0.85em;
+                display: block;
+                text-align: center;
+            }
+        }
+
         .loading {
             text-align: center;
             padding: 60px;
@@ -314,23 +410,241 @@
         }
 
         .motivation-banner {
-            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-main) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 25px 30px;
+            border-radius: 16px;
+            margin-bottom: 25px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            box-shadow: var(--shadow-md);
         }
 
         .motivation-banner h3 {
-            color: #333;
-            font-size: 1.3em;
-            margin-bottom: 5px;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: white;
         }
 
         .motivation-banner p {
-            color: #555;
-            font-size: 1em;
+            font-size: 1.1em;
+            margin: 0;
+            opacity: 0.95;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .info-banner {
+            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+            border: 2px solid var(--accent-light);
+            color: var(--text-main);
+            padding: 20px 30px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-banner h4 {
+            font-size: 1.3em;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            color: var(--accent-main);
+        }
+
+        .info-banner p {
+            font-size: 1.05em;
+            margin: 8px 0;
+            line-height: 1.5;
+        }
+
+        .legend-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: 600;
+        }
+
+        .legend-box {
+            width: 30px;
+            height: 20px;
+            border-radius: 4px;
+            border: 2px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-box.tunisia-leading {
+            background: linear-gradient(90deg, #d1f4ff 0%, #e8f8ff 100%);
+            border-left: 5px solid var(--accent-main);
+        }
+
+        /* Interactive Tour Styles */
+        .tour-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9998;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tour-overlay.active {
+            display: block;
+        }
+
+        .tour-spotlight {
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7);
+            border-radius: 12px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: pulse 2s infinite;
+            display: none; /* Hidden by default - only show during tour */
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.7); }
+            50% { box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.75), 0 0 30px 10px rgba(0, 123, 255, 0.5); }
+        }
+
+        .tour-tooltip {
+            position: fixed;
+            z-index: 10000;
+            background: white;
+            border-radius: 16px;
+            padding: 25px 30px;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: none; /* Hidden by default */
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tour-tooltip h3 {
+            color: var(--accent-main);
+            font-size: 1.4em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .tour-tooltip p {
+            color: var(--text-main);
+            font-size: 1.05em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .tour-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .tour-progress {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .tour-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tour-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tour-btn-skip {
+            background: #e0e0e0;
+            color: #666;
+        }
+
+        .tour-btn-skip:hover {
+            background: #d0d0d0;
+        }
+
+        .tour-btn-next {
+            background: var(--accent-main);
+            color: white;
+        }
+
+        .tour-btn-next:hover {
+            background: var(--accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 91, 159, 0.3);
+        }
+
+        .tour-btn-finish {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .tour-btn-finish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .interactive-hint {
+            display: inline-block;
+            cursor: pointer;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--accent-main) 0%, var(--accent-dark) 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: all 0.3s ease;
+            animation: bounce 2s infinite;
+        }
+
+        .interactive-hint:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 91, 159, 0.4);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Remove the bouncing hint button */
+        .interactive-hint {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .tour-tooltip {
+                max-width: calc(100vw - 40px) !important;
+                left: 20px !important;
+                right: 20px !important;
+            }
         }
 
         .section-header {
@@ -431,27 +745,59 @@
                 padding: 12px 20px;
                 font-size: 14px;
             }
+
+            .discovery-badge {
+                font-size: 0.65em;
+                right: 0;
+                top: -8px;
+            }
+
+            .breadcrumb-nav {
+                margin-bottom: 15px;
+                padding: 8px 12px;
+                font-size: 0.85em;
+                display: block;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="breadcrumb">
-            <a href="index.html">← Back to Home</a>
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb-nav">
+            <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a>
+            <span class="separator">/</span>
+            <span class="current-page" id="breadcrumbCurrent">Records Comparison</span>
         </div>
+
         <h1 id="pageTitle">Swimming Records Comparison</h1>
         
         <div class="tabs">
-            <div class="tab active" data-view="tunisia" onclick="switchView('tunisia')">🇹🇳 Tunisia Only</div>
-            <div class="tab" data-view="egypt" onclick="switchView('egypt')">🆚 vs Egypt</div>
+            <div class="tab active" data-view="tunisia" onclick="switchView('tunisia')">Tunisia Only</div>
+            <div class="tab" data-view="egypt" onclick="switchView('egypt')">vs Egypt</div>
             <div class="tab" data-view="arab" onclick="switchView('arab')">vs Arab Records</div>
-            <div class="tab" data-view="africa" onclick="switchView('africa')">🌍 vs Africa</div>
-            <div class="tab" data-view="world" onclick="switchView('world')">🌎 vs World</div>
+            <div class="tab" data-view="africa" onclick="switchView('africa')">vs Africa</div>
+            <div class="tab" data-view="world" onclick="switchView('world')">vs World</div>
+        </div>
+        
+        <!-- Dynamic country selector -->
+        <div class="country-selector" id="countrySelectorContainer" style="display: none; margin-top: 20px; text-align: center; position: relative; max-width: 400px; margin-left: auto; margin-right: auto; padding-top: 10px;">
+            <div id="discoveryBadge" class="discovery-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                Try comparing here!
+            </div>
+            <label for="countrySelector" style="font-weight: 600; color: var(--text-main); margin-right: 10px;">
+                Or compare with specific country:
+            </label>
+            <select id="countrySelector" onchange="switchToCountry(this.value);" onclick="removePulseEffect()" class="pulse-select" style="padding: 8px 16px; font-size: 1em; border-radius: 8px; border: 2px solid var(--accent-light); background: white; cursor: pointer; transition: all 0.3s; position: relative;">
+                <option value="">-- Select a country --</option>
+            </select>
         </div>
     </div>
 
     <div class="search-box">
-        <input type="text" id="searchBox" placeholder="🔍 Search events, swimmers, countries..." onkeyup="filterRecords()">
+        <input type="text" id="searchBox" placeholder="Search events, swimmers, countries..." onkeyup="filterRecords()">
     </div>
 
     <div class="filters">
@@ -483,7 +829,27 @@
         </div>
     </div>
 
+    <!-- Interactive Tour Overlay (all hidden by default) -->
+    <div class="tour-overlay" id="tourOverlay"></div>
+    <div class="tour-spotlight" id="tourSpotlight" style="display: none;"></div>
+    <div class="tour-tooltip" id="tourTooltip" style="display: none;"></div>
+
     <div class="comparison-container">
+        <div class="info-banner" id="infoBanner" style="display: none;">
+            <h4>💡 How to Compare Records</h4>
+            <p><strong>Highlighted rows</strong> (light blue with left border) = Tunisia has a faster or equal record!</p>
+            <div class="legend-row">
+                <div class="legend-item">
+                    <div class="legend-box tunisia-leading"></div>
+                    <span>Tunisia Leading/Equal</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box" style="background: white;"></div>
+                    <span>Tunisia Behind</span>
+                </div>
+            </div>
+        </div>
+
         <div class="motivation-banner" id="motivationBanner">
             <h3>🎯 The Journey to Greatness</h3>
             <p>Every champion was once a contender that refused to give up.</p>
@@ -667,8 +1033,8 @@
             const eventLower = event.toLowerCase();
             if (eventLower.includes('freestyle')) return '🏊';
             if (eventLower.includes('backstroke')) return '🏊‍♂️';
-            if (eventLower.includes('breaststroke')) return '🐸';
-            if (eventLower.includes('butterfly')) return '🦋';
+            if (eventLower.includes('breaststroke')) return '🏊‍♀️';
+            if (eventLower.includes('butterfly')) return '🏊';
             if (eventLower.includes('medley')) return '🎯';
             return '🏊'; // default
         }
@@ -825,7 +1191,16 @@
 
         function switchView(view) {
             currentView = view;
+
+            // Reset country selector only if switching to a main tab
+            const mainTabs = ['tunisia', 'egypt', 'arab', 'africa', 'world'];
+            const selector = document.getElementById('countrySelector');
             
+            if (mainTabs.includes(view)) {
+                selector.value = '';
+                selector.classList.remove('active-selection');
+            }
+
             document.querySelectorAll('.tab').forEach(tab => {
                 tab.classList.remove('active');
                 if (tab.dataset.view === view) {
@@ -843,7 +1218,7 @@
 
             const motivations = {
                 'tunisia': {
-                    title: '�🇳 Tunisia National Records',
+                    title: '🇹🇳 Tunisia National Records',
                     text: 'Official national swimming records for all events'
                 },
                 'egypt': {
@@ -864,13 +1239,57 @@
                 }
             };
 
-            document.getElementById('pageTitle').textContent = titles[view];
-            document.getElementById('motivationBanner').innerHTML = `
-                <h3>${motivations[view].title}</h3>
-                <p>${motivations[view].text}</p>
-            `;
+            // Check if it's a dynamically loaded country
+            if (availableCountries[view]) {
+                const country = availableCountries[view];
+                document.getElementById('pageTitle').textContent = `🇹🇳 Tunisia vs ${country.name}`;
+                document.getElementById('motivationBanner').innerHTML = `
+                    <h3>Tunisia vs ${country.name}</h3>
+                    <p>Head-to-head national records comparison</p>
+                `;
+                // Update breadcrumb
+                document.getElementById('breadcrumbCurrent').textContent = `vs ${country.name.replace(/🇦-🇿/g, '').trim()}`;
+            } else {
+                document.getElementById('pageTitle').textContent = titles[view] || 'Swimming Records Comparison';
+                document.getElementById('motivationBanner').innerHTML = `
+                    <h3>${motivations[view]?.title || 'Records Comparison'}</h3>
+                    <p>${motivations[view]?.text || 'Compare swimming records'}</p>
+                `;
+                // Update breadcrumb based on view
+                const breadcrumbTexts = {
+                    'tunisia': 'Tunisia Records',
+                    'egypt': 'vs Egypt',
+                    'arab': 'vs Arab Records',
+                    'africa': 'vs Africa',
+                    'world': 'vs World'
+                };
+                document.getElementById('breadcrumbCurrent').textContent = breadcrumbTexts[view] || 'Comparison';
+            }
+
+            // Show info banner only for comparison views
+            const infoBanner = document.getElementById('infoBanner');
+            if (view !== 'tunisia') {
+                infoBanner.style.display = 'block';
+            } else {
+                infoBanner.style.display = 'none';
+            }
 
             filterRecords();
+        }
+        
+        function switchToCountry(countryKey) {
+            if (countryKey && availableCountries[countryKey]) {
+                // Deactivate all main tabs
+                document.querySelectorAll('.tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                // Highlight the selector to show it's active
+                document.getElementById('countrySelector').classList.add('active-selection');
+                switchView(countryKey);
+            } else {
+                // User selected "-- Select a country --", remove highlighting
+                document.getElementById('countrySelector').classList.remove('active-selection');
+            }
         }
 
         function filterRecords() {
@@ -933,7 +1352,7 @@
                         <thead>
                             <tr>
                                 <th>Event</th>
-                                <th class="tunisia-col">🇹🇳 Time</th>
+                                <th class="tunisia-col">Tunisia Time</th>
                                 <th>Swimmer</th>
                                 <th>Date</th>
                                 <th>Location</th>
@@ -954,7 +1373,7 @@
                                 <td>
                                     <div class="${swimmerClass}" style="margin-bottom: 4px;">${record.swimmer}</div>
                                     <div class="record-details" style="font-size: 11px; color: #666;">
-                                        <span class="country-flag">🇹🇳</span>Tunisia
+                                        Tunisia
                                         ${record.date ? ' • ' + record.date : ''}
                                         ${missingInfo}
                                     </div>
@@ -983,18 +1402,31 @@
                         compareName = '🌍 Africa';
                         compareCol = 'africa-col';
                         compareColor = '#FF8C00';  // Africa orange
-                    } else {
+                    } else if (currentView === 'world') {
                         compareSet = worldRecords;
                         compareName = '🌎 World';
                         compareCol = 'world-col';
                         compareColor = '#0066cc';  // World blue
+                    } else if (availableCountries[currentView]) {
+                        // Dynamically loaded country
+                        const country = availableCountries[currentView];
+                        compareSet = country.data;
+                        compareName = country.name;
+                        compareCol = 'country-col';
+                        compareColor = country.color;
+                    } else {
+                        // Fallback
+                        compareSet = worldRecords;
+                        compareName = '🌎 World';
+                        compareCol = 'world-col';
+                        compareColor = '#0066cc';
                     }
 
                     html += `
                         <thead>
                             <tr>
                                 <th>Event</th>
-                                <th class="tunisia-col">🇹🇳 Tunisia</th>
+                                <th class="tunisia-col">Tunisia</th>
                                 <th class="${compareCol}">${compareName}</th>
                                 <th>Gap Analysis</th>
                             </tr>
@@ -1010,11 +1442,24 @@
                             compareSet
                         );
 
+                        // Fix world records data (fields are mixed up in scraper)
+                        let displayRecord = compareRecord;
+                        if (compareRecord && currentView === 'world') {
+                            displayRecord = {
+                                ...compareRecord,
+                                swimmer: compareRecord.club || compareRecord.swimmer,  // Actual swimmer is in 'club' field
+                                club: compareRecord.date || compareRecord.club,       // Actual country is in 'date' field
+                                date: compareRecord.meet || compareRecord.date,       // Actual date is in 'meet' field
+                                meet: compareRecord.location || compareRecord.meet,   // Actual meet is in 'location' field
+                                location: compareRecord.location || ''
+                            };
+                        }
+
                         // Check if Tunisia holds the record (same time) OR is leading (faster time)
-                        const tunisiaHoldsRecord = compareRecord && 
-                            tunRecord.time === compareRecord.time;
-                        const tunisiaIsLeading = compareRecord && 
-                            timeToSeconds(tunRecord.time) <= timeToSeconds(compareRecord.time);
+                        const tunisiaHoldsRecord = displayRecord && 
+                            tunRecord.time === displayRecord.time;
+                        const tunisiaIsLeading = displayRecord && 
+                            timeToSeconds(tunRecord.time) <= timeToSeconds(displayRecord.time);
 
                         let gapHtml = '<span style="color: #999;">No data</span>';
                         
@@ -1022,22 +1467,44 @@
                             const gap = calculateGap(tunRecord.time, compareRecord.time);
                             if (gap) {
                                 if (tunisiaHoldsRecord) {
-                                    const recordType = currentView === 'egypt' ? 'same record as Egypt' : 
-                                                      currentView === 'arab' ? 'Arab' :
-                                                      currentView === 'africa' ? 'African' : 'World';
+                                    let recordType;
+                                    if (currentView === 'egypt') {
+                                        recordType = 'same record as Egypt';
+                                    } else if (currentView === 'arab') {
+                                        recordType = 'Arab';
+                                    } else if (currentView === 'africa') {
+                                        recordType = 'African';
+                                    } else if (currentView === 'world') {
+                                        recordType = 'World';
+                                    } else if (availableCountries[currentView]) {
+                                        recordType = `same record as ${availableCountries[currentView].name}`;
+                                    } else {
+                                        recordType = 'World';
+                                    }
                                     gapHtml = `
                                         <span class="gap-indicator gap-excellent" style="background: #d4edda; color: #155724;">
-                                            🏆 Tunisia holds the ${recordType} record!
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg> Tunisia holds the ${recordType} record!
                                         </span>
                                     `;
                                 } else if (gap.isFaster) {
                                     // Tunisia is faster
-                                    const competitorName = currentView === 'egypt' ? 'Egypt' : 
-                                                          currentView === 'arab' ? 'Arab World' :
-                                                          currentView === 'africa' ? 'Africa' : 'World';
+                                    let competitorName;
+                                    if (currentView === 'egypt') {
+                                        competitorName = 'Egypt';
+                                    } else if (currentView === 'arab') {
+                                        competitorName = 'Arab World';
+                                    } else if (currentView === 'africa') {
+                                        competitorName = 'Africa';
+                                    } else if (currentView === 'world') {
+                                        competitorName = 'World';
+                                    } else if (availableCountries[currentView]) {
+                                        competitorName = availableCountries[currentView].name;
+                                    } else {
+                                        competitorName = 'World';
+                                    }
                                     gapHtml = `
                                         <span class="gap-indicator gap-excellent" style="background: #d4edda; color: #155724;">
-                                            🚀 Tunisia is ${Math.abs(gap.seconds)}s faster than ${competitorName}!
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg> Tunisia is ${Math.abs(gap.seconds)}s faster than ${competitorName}!
                                         </span>
                                     `;
                                 } else {
@@ -1053,24 +1520,24 @@
                         }
 
                         const rowClass = tunisiaIsLeading ? ' class="tunisia-highlight"' : '';
-                        const compareCountry = compareRecord ? getCountryFromClub(compareRecord.club) : '';
-                        const compareFlag = compareRecord ? getFlag(compareCountry) : '';
+                        const compareCountry = displayRecord ? getCountryFromClub(displayRecord.club) : '';
+                        const compareFlag = displayRecord ? getFlag(compareCountry) : '';
                         const tunisianSwimmerClass = isRelay(tunRecord.event) ? 'swimmer-name' : 'swimmer-name-large';
                         const styleIcon = getStyleIcon(tunRecord.event);
                         const tunMissingInfo = getMissingInfoIndicator(tunRecord);
-                        const compareMissingInfo = compareRecord ? getMissingInfoIndicator(compareRecord) : '';
+                        const compareMissingInfo = displayRecord ? getMissingInfoIndicator(displayRecord) : '';
                         const tunAgeIndicator = getRecordAge(tunRecord.date);
-                        const compareAgeIndicator = compareRecord ? getRecordAge(compareRecord.date) : '';
+                        const compareAgeIndicator = displayRecord ? getRecordAge(displayRecord.date) : '';
 
                         html += `
                             <tr${rowClass}>
                                 <td class="event-cell"><span class="style-icon">${styleIcon}</span>${tunRecord.event}</td>
                                 <td>
                                     <div class="record-info">
-                                        <div class="time-cell" style="color: #e30a17;">${tunRecord.time}</div>
+                                        <div class="time-cell" style="color: var(--accent-main);">${tunRecord.time}</div>
                                         <div class="${tunisianSwimmerClass}">${tunRecord.swimmer}</div>
                                         <div class="record-details">
-                                            <span class="country-flag">🇹🇳</span>Tunisia
+                                            Tunisia
                                             ${tunRecord.date ? ' • ' + tunRecord.date : ''}
                                             ${tunAgeIndicator}
                                             ${tunMissingInfo}
@@ -1078,13 +1545,13 @@
                                     </div>
                                 </td>
                                 <td>
-                                    ${compareRecord ? `
+                                    ${displayRecord ? `
                                         <div class="record-info">
-                                            <div class="time-cell" style="color: ${compareColor};">${compareRecord.time}</div>
-                                            <div class="swimmer-name">${compareRecord.swimmer}</div>
+                                            <div class="time-cell" style="color: ${compareColor};">${displayRecord.time}</div>
+                                            <div class="swimmer-name">${displayRecord.swimmer}</div>
                                             <div class="record-details">
                                                 ${currentView === 'world' ? '🌍 ' : ''}${compareFlag ? '<span class="country-flag">' + compareFlag + '</span>' : ''}${compareCountry}
-                                                ${compareRecord.date ? ' • ' + compareRecord.date : ''}
+                                                ${displayRecord.date ? ' • ' + displayRecord.date : ''}
                                                 ${compareAgeIndicator}
                                                 ${compareMissingInfo}
                                             </div>
@@ -1103,7 +1570,194 @@
             document.getElementById('recordsDisplay').innerHTML = html;
         }
 
-        window.onload = loadRecords;
+        // Interactive Tour System - DISABLED AUTO-START
+        let tourActive = false;
+        let currentTourStep = 0;
+        const tourSteps = [
+            {
+                element: '.tabs',
+                title: '🗂️ Comparison Tabs',
+                description: 'Click these tabs to compare Tunisia\'s swimming records with different regions!',
+                position: 'bottom'
+            },
+            {
+                element: '#searchBox',
+                title: '🔍 Smart Search',
+                description: 'Search for specific events, swimmer names, or locations. Try typing "freestyle" or "Oussama"!',
+                position: 'bottom'
+            },
+            {
+                element: '.filters',
+                title: '⚙️ Filter Options',
+                description: 'Filter records by course type (Long/Short), category (Men/Women), or event type.',
+                position: 'bottom'
+            }
+        ];
+
+        function startTour() {
+            tourActive = true;
+            currentTourStep = 0;
+            document.getElementById('tourOverlay').classList.add('active');
+            showTourStep(0);
+        }
+
+        function showTourStep(stepIndex) {
+            if (stepIndex >= tourSteps.length) {
+                endTour();
+                return;
+            }
+
+            const step = tourSteps[stepIndex];
+            const element = document.querySelector(step.element);
+            
+            if (!element) {
+                // Skip to next step if element not found
+                showTourStep(stepIndex + 1);
+                return;
+            }
+
+            const rect = element.getBoundingClientRect();
+            const spotlight = document.getElementById('tourSpotlight');
+            const tooltip = document.getElementById('tourTooltip');
+
+            // Position spotlight with scroll offset
+            spotlight.style.top = (window.pageYOffset + rect.top - 10) + 'px';
+            spotlight.style.left = (window.pageXOffset + rect.left - 10) + 'px';
+            spotlight.style.width = (rect.width + 20) + 'px';
+            spotlight.style.height = (rect.height + 20) + 'px';
+            spotlight.style.display = 'block';
+
+            // Create tooltip content
+            const isLastStep = stepIndex === tourSteps.length - 1;
+            tooltip.innerHTML = `
+                <h3>${step.title}</h3>
+                <p>${step.description}</p>
+                <div class="tour-controls">
+                    <span class="tour-progress">Step ${stepIndex + 1} of ${tourSteps.length}</span>
+                    <div class="tour-buttons">
+                        <button class="tour-btn tour-btn-skip" onclick="endTour()">Skip Tour</button>
+                        <button class="tour-btn ${isLastStep ? 'tour-btn-finish' : 'tour-btn-next'}" onclick="nextTourStep()">
+                            ${isLastStep ? '✓ Got It!' : 'Next →'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Position tooltip with better responsive handling
+            tooltip.style.display = 'block';
+            tooltip.style.position = 'absolute';
+            const tooltipRect = tooltip.getBoundingClientRect();
+            
+            if (step.position === 'bottom') {
+                const topPos = window.pageYOffset + rect.bottom + 20;
+                tooltip.style.top = topPos + 'px';
+                
+                // Center horizontally, but keep within viewport
+                let leftPos = window.pageXOffset + rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                leftPos = Math.max(20, Math.min(window.innerWidth - tooltipRect.width - 20, leftPos));
+                tooltip.style.left = leftPos + 'px';
+            } else if (step.position === 'top') {
+                const topPos = window.pageYOffset + rect.top - tooltipRect.height - 20;
+                tooltip.style.top = topPos + 'px';
+                
+                let leftPos = window.pageXOffset + rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+                leftPos = Math.max(20, Math.min(window.innerWidth - tooltipRect.width - 20, leftPos));
+                tooltip.style.left = leftPos + 'px';
+            }
+
+            // Scroll element into view smoothly
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function nextTourStep() {
+            currentTourStep++;
+            showTourStep(currentTourStep);
+        }
+
+        function endTour() {
+            tourActive = false;
+            document.getElementById('tourOverlay').classList.remove('active');
+            document.getElementById('tourSpotlight').style.display = 'none';
+            document.getElementById('tourTooltip').style.display = 'none';
+            
+            // Mark as completed in both localStorage and sessionStorage
+            localStorage.setItem('tunisiaRecordsTourCompleted', 'true');
+            sessionStorage.setItem('tunisiaRecordsTourShownThisSession', 'true');
+        }
+
+        // Dynamic country loading system
+        let availableCountries = {};
+        
+        async function loadAvailableCountries() {
+            // List of potential country comparison files
+            const potentialCountries = [
+                { key: 'egypt', name: 'Egypt', file: 'egypt_swimming_records.json', folder: 'arab_countries' },
+                { key: 'algeria', name: 'Algeria', file: 'algeria_swimming_records.json', folder: 'arab_countries' },
+                { key: 'morocco', name: 'Morocco', file: 'morocco_swimming_records.json', folder: 'arab_countries' },
+                { key: 'saudi', name: 'Saudi Arabia', file: 'saudi_arabia_swimming_records.json', folder: 'arab_countries' },
+                { key: 'uae', name: 'UAE', file: 'uae_swimming_records.json', folder: 'arab_countries' },
+                { key: 'jordan', name: 'Jordan', file: 'jordan_swimming_records.json', folder: 'arab_countries' },
+                { key: 'lebanon', name: 'Lebanon', file: 'lebanon_swimming_records.json', folder: 'arab_countries' },
+                { key: 'iraq', name: 'Iraq', file: 'iraq_swimming_records.json', folder: 'arab_countries' },
+                { key: 'syria', name: 'Syria', file: 'syria_swimming_records.json', folder: 'arab_countries' },
+                { key: 'qatar', name: 'Qatar', file: 'qatar_swimming_records.json', folder: 'arab_countries' },
+                { key: 'kuwait', name: 'Kuwait', file: 'kuwait_swimming_records.json', folder: 'arab_countries' },
+                { key: 'bahrain', name: 'Bahrain', file: 'bahrain_swimming_records.json', folder: 'arab_countries' },
+                { key: 'oman', name: 'Oman', file: 'oman_swimming_records.json', folder: 'arab_countries' },
+                { key: 'palestine', name: 'Palestine', file: 'palestine_swimming_records.json', folder: 'arab_countries' }
+            ];
+            
+            // Try to load each country
+            for (const country of potentialCountries) {
+                try {
+                    const response = await fetch(`../data/${country.folder}/${country.file}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        availableCountries[country.key] = {
+                            name: country.name,
+                            data: flattenRecords(data),
+                            color: '#C09300' // Gold color for individual countries
+                        };
+                    }
+                } catch (e) {
+                    // Country data not available, skip
+                }
+            }
+            
+            console.log('Available countries for comparison:', Object.keys(availableCountries));
+            
+            // Populate the dropdown selector
+            const selector = document.getElementById('countrySelector');
+            const container = document.getElementById('countrySelectorContainer');
+            
+            if (Object.keys(availableCountries).length > 0) {
+                // Sort countries alphabetically by name (remove emojis for sorting)
+                const sortedCountries = Object.entries(availableCountries)
+                    .filter(([key]) => key !== 'egypt') // Skip Egypt since it's already in main tabs
+                    .sort((a, b) => {
+                        const nameA = a[1].name.replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '').trim();
+                        const nameB = b[1].name.replace(/[\u{1F1E6}-\u{1F1FF}]/gu, '').trim();
+                        return nameA.localeCompare(nameB);
+                    });
+                
+                if (sortedCountries.length > 0) {
+                    sortedCountries.forEach(([key, country]) => {
+                        const option = document.createElement('option');
+                        option.value = key;
+                        option.textContent = country.name;
+                        selector.appendChild(option);
+                    });
+                    
+                    // Show the selector
+                    container.style.display = 'block';
+                }
+            }
+        }
+
+        window.onload = async function() {
+            await loadAvailableCountries();
+            await loadRecords();
+        };
     </script>
 </body>
 </html>

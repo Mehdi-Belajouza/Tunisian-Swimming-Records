@@ -43,6 +43,12 @@ python scrape_records.py
   - Event details, times, dates, and locations
   - Clean, professional presentation
 
+- **🌍 Dynamic Country Comparisons:**
+  - Select from 12+ Arab countries for head-to-head comparison
+  - Auto-detection system: new country data files are automatically added to the dropdown
+  - No code changes needed - just add JSON files to `data/arab_countries/`
+  - Extensible system for adding any country's swimming records
+
 - **Comprehensive Data:**
   - Long Course (50m pool) records
   - Short Course (25m pool) records
