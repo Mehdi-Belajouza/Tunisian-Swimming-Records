@@ -693,9 +693,7 @@
 
         /* Swimming style icons */
         .style-icon {
-            font-size: 1.1em;
-            margin-right: 6px;
-            opacity: 0.7;
+            display: none;
         }
 
         /* Record age indicators */
@@ -884,13 +882,29 @@
                 padding: 10px 15px;
             }
         }
+    <style>
+        /* CSS styles for record age badges */
+        .record-age-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 5px;
+        }
+        .record-age-badge.new { background-color: #10B981; color: white; }
+        .record-age-badge.recent { background-color: #3B82F6; color: white; }
+        .record-age-badge.aging { background-color: #F59E0B; color: white; }
+        .record-age-badge.old { background-color: #EF4444; color: white; }
     </style>
 </head>
 <body>
+    <script src="icons.js"></script>
     <div class="header">
         <!-- Breadcrumb Navigation -->
         <div class="breadcrumb-nav">
-            <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a>
+            <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -3px; margin-right: 6px;"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>Home</a>
             <span class="separator">/</span>
             <span class="current-page" id="breadcrumbCurrent">Records Comparison</span>
         </div>
@@ -908,11 +922,11 @@
         <!-- Dynamic country selector -->
         <div class="country-selector" id="countrySelectorContainer" style="display: none; margin-top: 20px; text-align: center; position: relative; max-width: 400px; margin-left: auto; margin-right: auto; padding-top: 10px;">
             <div id="discoveryBadge" class="discovery-badge">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-                Try comparing here!
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+                Compare Here
             </div>
             <label for="countrySelector" style="font-weight: 600; color: var(--text-main); margin-right: 10px;">
-                Or compare with specific country:
+                Or compare with a specific country:
             </label>
             <select id="countrySelector" onchange="switchToCountry(this.value);" onclick="removePulseEffect()" class="pulse-select" style="padding: 8px 16px; font-size: 1em; border-radius: 8px; border: 2px solid var(--accent-light); background: white; cursor: pointer; transition: all 0.3s; position: relative;">
                 <option value="">-- Select a country --</option>
@@ -960,8 +974,8 @@
 
     <div class="comparison-container">
         <div class="info-banner" id="infoBanner" style="display: none;">
-            <h4>💡 How to Compare Records</h4>
-            <p><strong>Highlighted rows</strong> (light blue with left border) = Tunisia has a faster or equal record!</p>
+            <h4>How to Read the Table</h4>
+            <p>Highlighted rows indicate that Tunisia's record is faster than or equal to the record in that specific category.</p>
             <div class="legend-row">
                 <div class="legend-item">
                     <div class="legend-box tunisia-leading"></div>
@@ -975,7 +989,7 @@
         </div>
 
         <div class="motivation-banner" id="motivationBanner">
-            <h3>🎯 The Journey to Greatness</h3>
+            <h3>The Journey to Greatness</h3>
             <p>Every champion was once a contender that refused to give up.</p>
         </div>
 
@@ -1028,28 +1042,28 @@
 
         // Country to flag emoji mapping
         const countryFlags = {
-            'Tunisia': '🇹🇳',
-            'South Africa': '🇿🇦',
-            'Egypt': '🇪🇬',
-            'Morocco': '🇲🇦',
-            'Algeria': '🇩🇿',
-            'UAE': '🇦🇪',
-            'United Arab Emirates': '🇦🇪',
-            'Saudi Arabia': '🇸🇦',
-            'Qatar': '🇶🇦',
-            'Kuwait': '🇰🇼',
-            'Bahrain': '🇧🇭',
-            'Lebanon': '🇱🇧',
-            'Oman': '🇴🇲',
-            'Jordan': '🇯🇴',
-            'Iraq': '🇮🇶',
-            'Syria': '🇸🇾',
-            'Palestine': '🇵🇸',
-            'Yemen': '🇾🇪',
-            'Libya': '🇱🇾',
-            'Sudan': '🇸🇩',
-            'Kenya': '🇰🇪',
-            'Zimbabwe': '🇿🇼',
+            'Tunisia': '',
+            'South Africa': '',
+            'Egypt': '',
+            'Morocco': '',
+            'Algeria': '',
+            'UAE': '',
+            'United Arab Emirates': '',
+            'Saudi Arabia': '',
+            'Qatar': '',
+            'Kuwait': '',
+            'Bahrain': '',
+            'Lebanon': '',
+            'Oman': '',
+            'Jordan': '',
+            'Iraq': '',
+            'Syria': '',
+            'Palestine': '',
+            'Yemen': '',
+            'Libya': '',
+            'Sudan': '',
+            'Kenya': '',
+            'Zimbabwe': '',
             'Senegal': '🇸🇳',
             'Nigeria': '🇳🇬',
             'Ghana': '🇬🇭',
@@ -1153,14 +1167,13 @@
         }
 
         function getStyleIcon(event) {
-            // Return emoji icon based on swimming style
             const eventLower = event.toLowerCase();
-            if (eventLower.includes('freestyle')) return '🏊';
-            if (eventLower.includes('backstroke')) return '🏊‍♂️';
-            if (eventLower.includes('breaststroke')) return '🏊‍♀️';
-            if (eventLower.includes('butterfly')) return '🏊';
-            if (eventLower.includes('medley')) return '🎯';
-            return '🏊'; // default
+            if (eventLower.includes('freestyle')) return icons.styles.freestyle;
+            if (eventLower.includes('backstroke')) return icons.styles.backstroke;
+            if (eventLower.includes('breaststroke')) return icons.styles.breaststroke;
+            if (eventLower.includes('butterfly')) return icons.styles.butterfly;
+            if (eventLower.includes('medley')) return icons.styles.medley;
+            return '';
         }
 
         function getMissingInfoIndicator(record) {
@@ -1177,28 +1190,20 @@
         }
 
         function getRecordAge(dateStr) {
-            // Return an emoji indicator based on record age
             if (!dateStr || dateStr === 'Date unknown') return '';
-            
             try {
-                // Parse date (format: "DD Month YYYY" or "Month YYYY")
                 const dateParts = dateStr.split(' ');
                 let year;
-                if (dateParts.length >= 3) {
-                    year = parseInt(dateParts[2]);
-                } else if (dateParts.length === 2) {
-                    year = parseInt(dateParts[1]);
-                } else {
-                    return '';
-                }
+                if (dateParts.length >= 3) year = parseInt(dateParts[2]);
+                else if (dateParts.length === 2) year = parseInt(dateParts[1]);
+                else return '';
                 
-                const currentYear = new Date().getFullYear();
-                const age = currentYear - year;
+                const age = new Date().getFullYear() - year;
                 
-                if (age <= 2) return '<span class="record-age" title="Recent record (last 2 years)">🔥</span>';  // Fresh/hot
-                if (age <= 5) return '<span class="record-age" title="Recent record (last 5 years)">⭐</span>';  // Recent
-                if (age <= 10) return '<span class="record-age" title="Aging record (5-10 years)">⏳</span>'; // Aging
-                return '<span class="record-age" title="Old record (10+ years)">💀</span>'; // Very old
+                if (age <= 2) return icons.age.new;
+                if (age <= 5) return icons.age.recent;
+                if (age <= 10) return icons.age.aging;
+                return icons.age.old;
             } catch (e) {
                 return '';
             }
